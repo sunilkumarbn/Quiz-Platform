@@ -1,0 +1,38 @@
+/* Card.css */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 4px solid #b34a4d; /* Matches the red accent in your screenshots */
+}
+
+.card h3 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+
+.card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card button {
+  background-color: #b34a4d;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #923a3d;
+}
