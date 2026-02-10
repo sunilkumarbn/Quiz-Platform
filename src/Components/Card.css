@@ -7,7 +7,7 @@
   max-width: 500px;
   margin: 20px auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-top: 4px solid #b34a4d; /* Matches the red accent in your screenshots */
+  border-top: 4px solid #b34a4d; 
 }
 
 .card h3 {
