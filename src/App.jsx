@@ -3,6 +3,7 @@ import Home from './Components/Home'
 import About from './Components/About'
 import Contact from './Components/Contact'  
 import Layout from './Components/Layout'
+import Profile from './Components/Profile'
 import './App.css'
 
 const App = () => {
