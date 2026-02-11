@@ -4,29 +4,20 @@ import QuestionCard from "./QuestionCard";
 import NewQuiz from "./NewQuiz";
 import ProgressTracker from "./ProgressTracker";
 
-const Card = ({ title, description, type, stats, setStats }) => {
+// 1. Add 'allQuizzes' to the props received from Home.jsx
+const Card = ({ title, description, type, stats, setStats, onSave, allQuizzes }) => { 
   const [isStarted, setIsStarted] = useState(false);
-
-  // Define your class based on state
   const cardClass = isStarted ? "card card-fullscreen" : "card";
-
-  const quizQuestions = [
-    { question: "What is React?", options: ["Library", "Framework", "Language"], answer: "Library" },
-    { question: "What is JSX?", options: ["JavaScript", "HTML", "Syntax Extension"], answer: "Syntax Extension" },
-    { question: "What is a component?", options: ["Function", "Class", "Reusable Piece of UI"], answer: "Reusable Piece of UI" },
-  ];
 
   return (
     <div className={cardClass}>
       {!isStarted ? (
-        // Standard View (Small Card)
         <>
           <h3>{title}</h3>
           <p>{description}</p>
           <button onClick={() => setIsStarted(true)}>Get Started</button>
         </>
       ) : (
-        // Expanded View (Full Screen)
         <div className="fullscreen-content">
           <button className="close-btn" onClick={() => setIsStarted(false)}>✕ Close</button>
           
@@ -34,11 +25,18 @@ const Card = ({ title, description, type, stats, setStats }) => {
             <QuestionCard 
               stats={stats} 
               setStats={setStats} 
-              questions={quizQuestions} 
+              quizList={allQuizzes} // 2. This now matches the updated QuestionCard logic
               onClose={() => setIsStarted(false)} 
             />
           )}
-          {type === "create" && <NewQuiz />}
+          
+          {type === "create" && (
+            <NewQuiz 
+              onSave={onSave} 
+              onClose={() => setIsStarted(false)} 
+            />
+          )}
+
           {type === "progress" && <ProgressTracker stats={stats} />}
         </div>
       )}

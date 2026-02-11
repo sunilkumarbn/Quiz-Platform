@@ -13,6 +13,25 @@ const App = () => {
     scores: [], // We need this array to calculate the average!
     lastScore: 0
   });
+  // App.jsx
+const [allQuizzes, setAllQuizzes] = useState([
+  { 
+    id: 1,
+    title: "React Basics", 
+    questions: [
+      { 
+        question: "What is React?", 
+        options: ["Library", "Framework", "Language"], 
+        answer: "Library" 
+      }
+    ] 
+  }
+]);
+
+// Function to add a new quiz to the list
+const addNewQuiz = (newQuiz) => {
+  setAllQuizzes([...allQuizzes, { ...newQuiz, id: Date.now() }]);
+};
 
   // 2. Use the correct name: 'quizStats' (not 'stats')
   const average = quizStats.scores.length 
@@ -28,7 +47,7 @@ const App = () => {
       element: <Layout />,
       children: [
         // Pass stats and setStats to Home so your Cards can use them
-        { index: true, element: <Home stats={fullStats} setStats={setQuizStats} /> },
+        { index: true, element: <Home stats={fullStats} setStats={setQuizStats}  onSaveQuiz={addNewQuiz} quizzes={allQuizzes} /> },
         { path: 'about', element: <About /> },
         { path: 'contact', element: <Contact /> }
       ]

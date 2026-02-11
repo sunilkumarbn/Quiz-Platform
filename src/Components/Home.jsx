@@ -1,15 +1,27 @@
+// Home.jsx
 import React from 'react'
 import Card from './Card'
-const Home = ({ stats, setStats }) => {
+
+const Home = ({ stats, setStats, onSaveQuiz, quizzes }) => {
   return (
     <>
-    <h1>Welcome to the Quiz Platform</h1>
-    <div className='card-wrapper'>
-        <Card title="Create Your Own Quiz" description="Easily create quizzes on any topic and share them with friends!" type="create" />
-        <Card title="Take Quizzes" description="Test your knowledge by taking quizzes created by others!"  type="take" stats={stats} setStats={setStats} />
-        <Card title="Track Your Progress" description="Keep track of your quiz scores and see how you improve over time!" type="progress" stats={stats} 
-        setStats={setStats}/>
-    </div>
+      <h1>Quiz Dashboard</h1>
+      <div className='card-wrapper'>
+        {/* Card 1: The Creator */}
+        <Card title="Create Quiz" type="create" onSave={onSaveQuiz} />
+
+        {/* Card 2: The Portal (Now holds ALL quizzes) */}
+        <Card 
+          title="Take a Quiz" 
+          type="take" 
+          stats={stats} 
+          setStats={setStats} 
+          allQuizzes={quizzes} // Pass the whole array here
+        />
+
+        {/* Card 3: Progress */}
+        <Card title="My Stats" type="progress" stats={stats} setStats={setStats} />
+      </div>
     </>
   )
 }
