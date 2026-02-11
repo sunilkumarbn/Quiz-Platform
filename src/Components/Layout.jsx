@@ -8,7 +8,7 @@ const Layout = () => {
       <main>
         <Outlet /> 
       </main>
-      <footer>My Footer</footer>
+      <footer>All Rights Reserved &copy; Adarsh And Sunil</footer>
     </div>
   );
 };
